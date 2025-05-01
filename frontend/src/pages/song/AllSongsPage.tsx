@@ -62,8 +62,8 @@ const AllSongsPage = () => {
     currentPage,
     totalPages,
     songsPerPage,
-    addSongToFavorites,
-    removeSongFromFavorites,
+    // addSongToFavorites,
+    // removeSongFromFavorites,
     favorites,
     fetchUserFavorites,
     playlists,
@@ -71,7 +71,9 @@ const AllSongsPage = () => {
     addTrackToPlaylist,
     totalSongs
   } = useMusicStore();
-  const { setCurrentSong, addToQueue } = usePlayerStore();
+  const { 
+    // setCurrentSong, 
+    addToQueue } = usePlayerStore();
   const { info } = useChatStore();
 
   const limit = 20; // Giới hạn 20 bài hát mỗi trang
@@ -107,27 +109,27 @@ const AllSongsPage = () => {
   const isFavorite = (songId: string) => favorites.some((fav) => fav._id === songId);
 
 
-  const handleToggleFavorite = async (songId: string) => {
-    if (!info?._id) {
-      toast.error("Please log in to favorite songs");
-      return;
-    }
-    setLocalLoading((prev) => ({ ...prev, [songId]: true }));
-    const wasFavorited = isFavorite(songId);
+  // const handleToggleFavorite = async (songId: string) => {
+  //   if (!info?._id) {
+  //     toast.error("Please log in to favorite songs");
+  //     return;
+  //   }
+  //   setLocalLoading((prev) => ({ ...prev, [songId]: true }));
+  //   const wasFavorited = isFavorite(songId);
 
-    try {
-      if (wasFavorited) {
-        await removeSongFromFavorites(info._id, songId);
-      } else {
-        await addSongToFavorites(info._id, songId);
-      }
-      await fetchUserFavorites(info._id, 1, 1000);
-    } catch (error) {
-      toast.error(`Failed to update favorite status: ${error}`);
-    } finally {
-      setLocalLoading((prev) => ({ ...prev, [songId]: false }));
-    }
-  };
+  //   try {
+  //     if (wasFavorited) {
+  //       await removeSongFromFavorites(info._id, songId);
+  //     } else {
+  //       await addSongToFavorites(info._id, songId);
+  //     }
+  //     await fetchUserFavorites(info._id, 1, 1000);
+  //   } catch (error) {
+  //     toast.error(`Failed to update favorite status: ${error}`);
+  //   } finally {
+  //     setLocalLoading((prev) => ({ ...prev, [songId]: false }));
+  //   }
+  // };
 
   const handleAddToPlaylist = async (playlistId: string, trackId: string) => {
     if (!info?._id) {

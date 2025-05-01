@@ -3,7 +3,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
@@ -11,7 +10,7 @@ import {
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { Song } from "@/types";
 import { Ellipsis, ListCheck, ListEnd } from "lucide-react";
-import { useState } from "react";
+// import { useState } from "react";
 
 type DropdownMenuProps = {
   song: Song;
@@ -20,14 +19,15 @@ type DropdownMenuProps = {
 export function DropdownMenuDemo({ song, className }: DropdownMenuProps) {
   const {
     currentSong,
-    isPlaying,
-    setCurrentSong,
-    togglePlay,
-    initializeQueue
+    // isPlaying,
+    // setCurrentSong,
+    // togglePlay,
+    // initializeQueue
   } = usePlayerStore();
   const isCurrentSong = currentSong?._id === song._id;
-  const [isClicked, setIsClicked] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  console.log("isCurrentSong", isCurrentSong);
+  // const [isClicked, setIsClicked] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   return (
     <DropdownMenu>
@@ -35,7 +35,7 @@ export function DropdownMenuDemo({ song, className }: DropdownMenuProps) {
         <Ellipsis
           size={20}
           className={`absolute top-3 right-3 text-zinc-400 hover:text-white transition-colors duration-300
-            opacity-0 group-hover:opacity-100 ${isLoading ? "animate-pulse" : ""} ${className}`}
+            opacity-0 group-hover:opacity-100             ${className}`}
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 bg-zinc-800 border border-zinc-700 rounded-md shadow-lg">

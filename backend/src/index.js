@@ -5,8 +5,10 @@ import { connectDB } from "./lib/db.js";
 import fileUpload from "express-fileupload";
 import path from "path";
 import cors from "cors";
+import fs from "fs";
 import { createServer } from "http";
 import { initializeSocket } from "./lib/socket.js";
+import cron from "node-cron";
 
 // Import các tuyến đường
 import userRoutes from "./routes/user.route.js";
@@ -65,6 +67,22 @@ app.use(
   })
 );
 
+// cron jobs
+const tempDir = path.join(process.cwd(), "tmp");
+cron.schedule("0 * * * *", () => {
+	if (fs.existsSync(tempDir)) {
+		fs.readdir(tempDir, (err, files) => {
+			if (err) {
+				console.log("error", err);
+				return;
+			}
+			for (const file of files) {
+				fs.unlink(path.join(tempDir, file), (err) => {});
+			}
+		});
+	}
+});
+
 // Định nghĩa các router
 app.use("/api/users", userRoutes); // conversation và message routes
 app.use("/api/auth", authRoutes);
@@ -84,6 +102,13 @@ app.use("/api/trackinstrument", trackInstrumentRoutes);
 app.use("/api/albumtrack", albumTrackRoutes);
 // app.use("/api/reviews", reviewRoutes);
 // app.use("/api/stickers", stickerRoutes);
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "../frontend/dist")));
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+	});
+}
+
 // Error handler
 app.use((err, req, res, next) => {
   console.error("Server error:", err); // Log lỗi để debug

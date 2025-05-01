@@ -761,6 +761,7 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
       await axiosInstance.delete(`/api/queue/${userId}/${queueItemId}`);
       set((state) => {
         const newQueue = state.queue.filter((song, index) => {
+          console.log("song._id:", song._id);
           // Assuming queueItemId corresponds to song._id or a unique identifier in the queue
           // You might need to adjust this logic based on how queueItemId is mapped to songs
           return state.queue.findIndex((s) => s._id === queueItemId) !== index;

@@ -102,7 +102,9 @@ const showErrorToast = (message: string) =>
     iconTheme: { primary: "#ef4444", secondary: "#1f2937" },
   });
 
-const baseURL = "http://localhost:5000"; // Socket dùng base URL không có /api
+// const baseURL = "http://localhost:5000"; // Socket dùng base URL không có /api
+const baseURL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
+
 const socket = io(baseURL, {
   autoConnect: false, // only connect if user is authenticated
   withCredentials: true,
@@ -732,7 +734,8 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
   markMessageAsRead: async (messageId: string, conversationId: string) => {
     try {
-      const response = await axiosInstance.put<MarkMessageAsReadResponse>(
+      // const response = await 
+      axiosInstance.put<MarkMessageAsReadResponse>(
         `/users/conversations/${conversationId}/messages/${messageId}/read`
       );
       const socket = get().socket;
@@ -760,7 +763,8 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
   deleteMessage: async (messageId: string, conversationId: string) => {
     try {
-      const response = await axiosInstance.delete<DeleteMessageResponse>(
+      // const response = 
+      await axiosInstance.delete<DeleteMessageResponse>(
         `/users/conversations/${conversationId}/messages/${messageId}`
       );
       const socket = get().socket;
@@ -789,7 +793,8 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     conversationId: string
   ) => {
     try {
-      const response = await axiosInstance.patch<Message>(
+      // const response = 
+      await axiosInstance.patch<Message>(
         `/messages/${messageId}`,
         { content }
       );

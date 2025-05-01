@@ -1,5 +1,4 @@
 import { Playlist } from "@/types";
-import SectionGridSkeleton from "./SectionGridSkeleton";
 import { Button } from "@/components/ui/button";
 import PlayButton from "./PlayButton";
 import { Card, CardContent } from "@/components/ui/card";
@@ -61,7 +60,7 @@ const PlaylistSection = ({
     setCurrentPage(page);
   };
 
-  if (playlists.length === 0) return null;
+  if (playlists.length === 0 || isLoading) return null;
   // if (isLoading) return <SectionGridSkeleton />;
 
   return (

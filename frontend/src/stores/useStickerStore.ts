@@ -59,7 +59,7 @@ const showErrorToast = (message: string) =>
   });
 
 // Tạo store với Zustand
-export const useStickerStore = create<StickerState>((set, get) => ({
+export const useStickerStore = create<StickerState>((set) => ({
   stickers: [],
   stickerPacks: [],
   stickerPackItems: [],

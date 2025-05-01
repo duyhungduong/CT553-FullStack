@@ -5,7 +5,6 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { LayoutDashboardIcon } from "lucide-react";
-import React from "react";
 import { Link } from "react-router-dom";
 import SignInOAuthButtons from "../loginbutton/SignInOAuthButtons";
 import { Button, buttonVariants } from "../ui/button";

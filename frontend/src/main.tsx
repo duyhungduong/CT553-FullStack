@@ -8,8 +8,6 @@ import AuthProvider from "./providers/AuthProvider.tsx";
 import "@fontsource/outfit/400.css"; // Chỉ import trọng số 400
 
 
-
-
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {

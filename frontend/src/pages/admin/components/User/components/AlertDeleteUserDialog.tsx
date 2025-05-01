@@ -11,14 +11,15 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Trash2 } from "lucide-react";
-import { useChatStore } from "@/stores/useChatStore";
+// import { useChatStore } from "@/stores/useChatStore";
 
 const AlertDeleteUserDialog = ({ userId }: { userId: string }) => {
-  const {  } = useChatStore();
+  // const {  } = useChatStore();
 
   const handleDelete = () => {
     // deleteUser(userId);
   };
+  console.log(userId);
 
   return (
     <AlertDialog>

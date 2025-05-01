@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Ignore environment file in backend
 .env
+node_modules

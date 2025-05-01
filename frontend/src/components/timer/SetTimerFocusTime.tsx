@@ -11,48 +11,48 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/drawer";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import EmblaCarousel from "./components/EmblaCarousel";
 const SetTimerFocusTime = () => {
-    const [timeElapsed, setTimeElapsed] = useState(0); // Thời gian đã trôi qua (giây)
-    const [isRunning, setIsRunning] = useState(false); // Trạng thái đang chạy hoặc dừng
+    // const [timeElapsed, setTimeElapsed] = useState(0); // Thời gian đã trôi qua (giây)
+    // const [isRunning, setIsRunning] = useState(false); // Trạng thái đang chạy hoặc dừng
     const LOOP = true;
     // Chạy đồng hồ khi isRunning = true
-    useEffect(() => {
-      let timer: NodeJS.Timeout | null = null;
+    // useEffect(() => {
+    //   let timer: NodeJS.Timeout | null = null;
   
-      if (isRunning) {
-        timer = setInterval(() => {
-          setTimeElapsed((prev) => prev + 1);
-        }, 1000);
-      } else if (!isRunning && timer) {
-        clearInterval(timer);
-      }
+    //   if (isRunning) {
+    //     timer = setInterval(() => {
+    //       setTimeElapsed((prev) => prev + 1);
+    //     }, 1000);
+    //   } else if (!isRunning && timer) {
+    //     clearInterval(timer);
+    //   }
   
-      return () => {
-        if (timer) clearInterval(timer);
-      };
-    }, [isRunning]);
+    //   return () => {
+    //     if (timer) clearInterval(timer);
+    //   };
+    // }, [isRunning]);
   
     // Định dạng thời gian thành phút:giây
-    const formatTime = (seconds: number) => {
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = seconds % 60;
-      return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-        .toString()
-        .padStart(2, "0")}`;
-    };
+    // const formatTime = (seconds: number) => {
+    //   const minutes = Math.floor(seconds / 60);
+    //   const remainingSeconds = seconds % 60;
+    //   return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+    //     .toString()
+    //     .padStart(2, "0")}`;
+    // };
   
-    // Xử lý nút bắt đầu / tạm dừng
-    const toggleTimer = () => {
-      setIsRunning((prev) => !prev);
-    };
+    // // Xử lý nút bắt đầu / tạm dừng
+    // const toggleTimer = () => {
+    //   setIsRunning((prev) => !prev);
+    // };
   
-    // Đặt lại đồng hồ
-    const resetTimer = () => {
-      setIsRunning(false);
-      setTimeElapsed(0);
-    };
+    // // Đặt lại đồng hồ
+    // const resetTimer = () => {
+    //   setIsRunning(false);
+    //   setTimeElapsed(0);
+    // };
   
     return (
       <Drawer>

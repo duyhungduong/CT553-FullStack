@@ -1,5 +1,5 @@
 import { useMusicStore } from "@/stores/useMusicStore";
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import FeaturedSection from "./components/FeaturedSection";
 import SectionGrid from "./components/SectionGrid";
 import { ScrollArea } from "@/components/ui/scroll-area";

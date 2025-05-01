@@ -2,7 +2,6 @@ import SectionGridSkeleton from "./SectionGridSkeleton";
 import { Song } from "@/types";
 import { Button } from "@/components/ui/button";
 import PlayButton from "./PlayButton";
-import * as React from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {

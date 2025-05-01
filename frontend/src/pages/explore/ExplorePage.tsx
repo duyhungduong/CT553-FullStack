@@ -2,7 +2,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useMusicStore } from "@/stores/useMusicStore";
 import { usePlayerStore } from "@/stores/usePlayerStore";
-import { Play, TrendingUp, Clock, Music, Star } from "lucide-react";
+import { TrendingUp, Clock, Music, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Header from "./components/Header";
@@ -62,7 +62,9 @@ const ExplorePage = () => {
     instruments,
     fetchInstruments,
   } = useMusicStore();
-  const { setCurrentSong, addToQueue } = usePlayerStore();
+  const { 
+    // setCurrentSong,
+     addToQueue } = usePlayerStore();
   const { info } = useChatStore(); // Giả sử bạn có useChatStore để lấy info user
 
   const [localLoading, setLocalLoading] = useState<{ [key: string]: boolean }>(

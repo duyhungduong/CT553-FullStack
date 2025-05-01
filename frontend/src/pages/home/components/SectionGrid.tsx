@@ -156,7 +156,7 @@ const SectionGrid = ({
   };
 
   // if (isLoading) return <SectionGridSkeleton />;
-  if ( songs.length === 0) return <SectionGridSkeleton />;
+  if ( songs.length === 0 || isLoading) return <SectionGridSkeleton />;
 
   return (
     <div className="mb-12">

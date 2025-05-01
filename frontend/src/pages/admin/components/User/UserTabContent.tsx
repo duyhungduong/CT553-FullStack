@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
-import React from "react";
+// import React from "react";
 import UsersTable from "./components/UsersTable";
 import { Input } from "@/components/ui/input";
 const UserTabContent = () => {

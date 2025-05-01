@@ -43,7 +43,9 @@ const StickerTabContent = () => {
   } = useStickerStore();
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<StickerCategory | "all">("all");
+  const [selectedCategory, setSelectedCategory] = useState<
+    StickerCategory | "all"
+  >("all");
   const [editStickerId, setEditStickerId] = useState<string | null>(null);
   const [deleteStickerId, setDeleteStickerId] = useState<string | null>(null); // State để mở AlertDialog
 
@@ -53,9 +55,8 @@ const StickerTabContent = () => {
   }, [fetchStickers, fetchStickerPacks]);
 
   const debouncedSearch = useCallback(
-    debounce((
-      // query: string
-    ) => {
+    debounce((query: string) => {
+      console.log("query", query);
       fetchStickers({
         category: selectedCategory === "all" ? undefined : selectedCategory,
         is_premium: undefined,
@@ -71,7 +72,9 @@ const StickerTabContent = () => {
   }, [searchQuery, debouncedSearch]);
 
   const filteredStickers = stickers.filter((sticker) => {
-    const matchesSearch = sticker.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = sticker.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     const matchesCategory =
       selectedCategory && selectedCategory !== "all"
         ? sticker.category === selectedCategory
@@ -123,7 +126,9 @@ const StickerTabContent = () => {
         />
         <Select
           value={selectedCategory}
-          onValueChange={(value) => setSelectedCategory(value as StickerCategory | "all")}
+          onValueChange={(value) =>
+            setSelectedCategory(value as StickerCategory | "all")
+          }
         >
           <SelectTrigger className="w-full sm:w-48 bg-zinc-800/70 border-zinc-700/50 text-white">
             <SelectValue placeholder="Select category" />
@@ -134,7 +139,11 @@ const StickerTabContent = () => {
                 All Categories
               </SelectItem>
               {STICKER_CATEGORIES.map((category) => (
-                <SelectItem key={category} value={category} className="hover:bg-zinc-700">
+                <SelectItem
+                  key={category}
+                  value={category}
+                  className="hover:bg-zinc-700"
+                >
                   {category}
                 </SelectItem>
               ))}
@@ -182,7 +191,9 @@ const StickerTabContent = () => {
                           {sticker.name}
                         </p>
                         {sticker.is_premium && (
-                          <Badge className="mt-1 bg-yellow-500 text-black">Premium</Badge>
+                          <Badge className="mt-1 bg-yellow-500 text-black">
+                            Premium
+                          </Badge>
                         )}
                         <div className="absolute top-0 right-0 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                           <Button
@@ -206,9 +217,13 @@ const StickerTabContent = () => {
                             </AlertDialogTrigger>
                             <AlertDialogContent className="bg-zinc-800 border-zinc-700 text-white">
                               <AlertDialogHeader>
-                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                <AlertDialogTitle>
+                                  Are you sure?
+                                </AlertDialogTitle>
                                 <AlertDialogDescription>
-                                  This action cannot be undone. This will permanently delete the sticker "{sticker.name}".
+                                  This action cannot be undone. This will
+                                  permanently delete the sticker "{sticker.name}
+                                  ".
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>
@@ -232,11 +247,15 @@ const StickerTabContent = () => {
                 <div className="flex items-center justify-between mt-4">
                   <p className="text-sm text-zinc-400">
                     Page {stickersPagination.page} of{" "}
-                    {Math.ceil(stickersPagination.total / stickersPagination.limit) || 1}
+                    {Math.ceil(
+                      stickersPagination.total / stickersPagination.limit
+                    ) || 1}
                   </p>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => handleStickerPageChange(stickersPagination.page - 1)}
+                      onClick={() =>
+                        handleStickerPageChange(stickersPagination.page - 1)
+                      }
                       disabled={stickersPagination.page <= 1}
                       variant="outline"
                       className="bg-zinc-700 text-white hover:bg-zinc-600"
@@ -244,10 +263,14 @@ const StickerTabContent = () => {
                       Previous
                     </Button>
                     <Button
-                      onClick={() => handleStickerPageChange(stickersPagination.page + 1)}
+                      onClick={() =>
+                        handleStickerPageChange(stickersPagination.page + 1)
+                      }
                       disabled={
                         stickersPagination.page >=
-                        Math.ceil(stickersPagination.total / stickersPagination.limit)
+                        Math.ceil(
+                          stickersPagination.total / stickersPagination.limit
+                        )
                       }
                       variant="outline"
                       className="bg-zinc-700 text-white hover:bg-zinc-600"
@@ -292,7 +315,10 @@ const StickerTabContent = () => {
                       >
                         <div className="flex items-center gap-4">
                           <img
-                            src={pack.stickers?.[0]?.image_url || "/default-pack.png"}
+                            src={
+                              pack.stickers?.[0]?.image_url ||
+                              "/default-pack.png"
+                            }
                             alt={pack.name}
                             className="w-16 h-16 object-cover rounded-md"
                           />
@@ -305,8 +331,12 @@ const StickerTabContent = () => {
                             </p>
                             {pack.is_premium && (
                               <div className="flex items-center gap-2">
-                                <Badge className="bg-yellow-500 text-black">Premium</Badge>
-                                <span className="text-sm text-white">${pack.price}</span>
+                                <Badge className="bg-yellow-500 text-black">
+                                  Premium
+                                </Badge>
+                                <span className="text-sm text-white">
+                                  ${pack.price}
+                                </span>
                               </div>
                             )}
                             {pack.isOwned && (
@@ -321,11 +351,18 @@ const StickerTabContent = () => {
                 <div className="flex items-center justify-between mt-4">
                   <p className="text-sm text-zinc-400">
                     Page {stickerPacksPagination.page} of{" "}
-                    {Math.ceil(stickerPacksPagination.total / stickerPacksPagination.limit) || 1}
+                    {Math.ceil(
+                      stickerPacksPagination.total /
+                        stickerPacksPagination.limit
+                    ) || 1}
                   </p>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => handleStickerPackPageChange(stickerPacksPagination.page - 1)}
+                      onClick={() =>
+                        handleStickerPackPageChange(
+                          stickerPacksPagination.page - 1
+                        )
+                      }
                       disabled={stickerPacksPagination.page <= 1}
                       variant="outline"
                       className="bg-zinc-700 text-white hover:bg-zinc-600"
@@ -333,10 +370,17 @@ const StickerTabContent = () => {
                       Previous
                     </Button>
                     <Button
-                      onClick={() => handleStickerPackPageChange(stickerPacksPagination.page + 1)}
+                      onClick={() =>
+                        handleStickerPackPageChange(
+                          stickerPacksPagination.page + 1
+                        )
+                      }
                       disabled={
                         stickerPacksPagination.page >=
-                        Math.ceil(stickerPacksPagination.total / stickerPacksPagination.limit)
+                        Math.ceil(
+                          stickerPacksPagination.total /
+                            stickerPacksPagination.limit
+                        )
                       }
                       variant="outline"
                       className="bg-zinc-700 text-white hover:bg-zinc-600"
@@ -347,7 +391,9 @@ const StickerTabContent = () => {
                 </div>
               </div>
             ) : (
-              <p className="text-zinc-400 text-center">No sticker packs found.</p>
+              <p className="text-zinc-400 text-center">
+                No sticker packs found.
+              </p>
             )}
           </CardContent>
         </Card>
