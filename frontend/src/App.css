@@ -1,0 +1,191 @@
+/* ScrollArea container - Áp dụng overflow */
+.scroll-area {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ScrollArea viewport - Phần hiển thị nội dung */
+.scroll-area-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #5a5a6e #1e1e2f; /* Firefox colors */
+}
+
+/* Webkit browsers (Chrome, Edge, Safari) */
+.scroll-area-viewport::-webkit-scrollbar {
+  width: 2px; /* Độ rộng thanh cuộn dọc */
+  height: 2px; /* Độ cao thanh cuộn ngang */
+}
+
+.scroll-area-viewport::-webkit-scrollbar-track {
+  background: #1e1e2f; /* Màu nền thanh cuộn */
+}
+
+.scroll-area-viewport::-webkit-scrollbar-thumb {
+  background: #5a5a6e; /* Màu thanh cuộn */
+  border-radius: 4px; /* Góc tròn của thanh cuộn */
+}
+
+.scroll-area-viewport::-webkit-scrollbar-thumb:hover {
+  background: #73738c; /* Màu khi hover */
+}
+
+/* ScrollArea scrollbar - Áp dụng với Radix UI */
+.scroll-area-scrollbar {
+  display: flex;
+  touch-action: none;
+  user-select: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.scroll-area-scrollbar[data-orientation="vertical"] {
+  width: 8px;
+  border-left: 1px solid transparent;
+}
+
+.scroll-area-scrollbar[data-orientation="horizontal"] {
+  height: 8px;
+  border-top: 1px solid transparent;
+}
+
+.scroll-area-thumb {
+  flex: 1;
+  background-color: #5a5a6e; /* Màu mặc định */
+  border-radius: 4px; /* Góc tròn */
+  position: relative;
+}
+
+.scroll-area-thumb:hover {
+  background-color: #73738c; /* Màu khi hover */
+}
+
+/* Tùy chọn cuộn góc (corner) */
+.scroll-area-corner {
+  background: #1e1e2f; /* Màu nền góc */
+}
+.embla {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 22.2rem;
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.embla:before,
+.embla:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  content: "";
+  display: block;
+  height: calc(50% - 32px / 2);
+  z-index: 1;
+  pointer-events: none;
+}
+.embla:before {
+  top: -0.5px;
+  border-bottom: 0.5px solid rgba(var(--text-high-contrast-rgb-value), 0.3);
+  background: linear-gradient(
+    to top,
+    rgba(var(--background-site-rgb-value), 0.65) 0%,
+    rgba(var(--background-site-rgb-value), 1) 100%
+  );
+}
+.embla:after {
+  bottom: -0.5px;
+  border-top: 0.5px solid rgba(var(--text-high-contrast-rgb-value), 0.3);
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-site-rgb-value), 0.65) 0%,
+    rgba(var(--background-site-rgb-value), 1) 100%
+  );
+}
+.embla__ios-picker {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  min-width: 50%;
+  justify-content: center;
+  line-height: 1;
+  font-size: 1.8rem;
+}
+.embla__ios-picker__scene {
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  touch-action: pan-x;
+}
+.embla__ios-picker__viewport {
+  height: 32px;
+  width: 100%;
+  perspective: 1000px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.embla__ios-picker__viewport--perspective-left {
+  perspective-origin: calc(50% + 130px) 50%;
+  transform: translateX(27px);
+}
+.embla__ios-picker__viewport--perspective-right {
+  perspective-origin: calc(50% - 130px) 50%;
+  transform: translateX(-27px);
+}
+.embla__ios-picker__container {
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.embla__ios-picker__slide {
+  width: 100%;
+  height: 100%;
+  font-size: 19px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  opacity: 0;
+}
+.embla__ios-picker__label {
+  font-weight: 700;
+  transform: translateX(-55px);
+  pointer-events: none;
+}
+
+/* LoadingPage.css */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes music-bar {
+  0%, 100% { height: 0.5rem; }
+  50% { height: 2rem; }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

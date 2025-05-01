@@ -1,0 +1,34 @@
+/* LoadingPage.module.css */
+.loading-page {
+  margin: 0;
+  overflow: hidden;
+}
+
+.loading-page .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #1a0b2e, #2e1a47, #0f172a);
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-page .particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Các kiểu khác tương tự, thêm .loading-page trước mỗi selector */
+.loading-page .loading-container {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+/* ... */
