@@ -50,8 +50,8 @@ npm install -g @railway/cli
 # Login Railway
 railway login
 
-# Trong thư mục backend/
-cd backend
+# Trong thư mục packages/api/
+cd packages/api
 railway link
 railway up
 
@@ -59,7 +59,7 @@ railway up
 # 1. Vào https://railway.app
 # 2. Connect GitHub
 # 3. Import repository: CT553-FullStack
-# 4. Select backend folder
+# 4. Set Root Directory: packages/api
 ```
 
 **Set Railway Environment Variables:**
@@ -82,8 +82,8 @@ npm install -g vercel
 # Login Vercel
 vercel login
 
-# Trong thư mục frontend/
-cd frontend
+# Trong thư mục packages/web/
+cd packages/web
 vercel
 
 # Follow prompts:
@@ -147,7 +147,7 @@ vercel domains add melodicbook.duongduyhung.tech
 
 ### BƯỚC 6: Update PWA Configuration
 
-#### Update `frontend/public/manifest.json`:
+#### Update `packages/web/public/manifest.json`:
 
 ```json
 {
@@ -174,7 +174,7 @@ vercel domains add melodicbook.duongduyhung.tech
 }
 ```
 
-#### Update `frontend/public/sw.js`:
+#### Update `packages/web/public/sw.js`:
 
 ```javascript
 const CACHE_NAME = "melodicbook-v1";
@@ -189,7 +189,7 @@ const STATIC_ASSETS = [
 
 #### Update Environment Files:
 
-**frontend/.env.production:**
+**packages/web/.env.production:**
 
 ```env
 VITE_API_URL=https://api.duongduyhung.tech
@@ -197,7 +197,7 @@ VITE_CLERK_PUBLISHABLE_KEY=pk_live_...
 VITE_SITE_URL=https://duongduyhung.tech
 ```
 
-**backend/.env.production:**
+**packages/api/.env.production:**
 
 ```env
 NODE_ENV=production
@@ -211,13 +211,13 @@ PORT=8000
 
 ```bash
 # Build và deploy frontend
-cd frontend
+cd packages/web
 npm run build
 vercel --prod
 
 # Backend tự động deploy từ GitHub
 # Hoặc manual push:
-cd backend
+cd packages/api
 railway up --service backend
 ```
 
