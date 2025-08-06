@@ -1,13 +1,17 @@
 {
-  "name": "melodicbook",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "melodicbook-repo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-		"build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-		"start": "npm start --prefix backend"
-	},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "api": "npm --workspace=api",
+    "web": "npm --workspace=web",
+    "mobile": "npm --workspace=mobile",
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm test --workspaces --if-present"
+  },
+  "devDependencies": {}
 }

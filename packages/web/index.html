@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- Viewport and Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MelodicBook" />
+    <meta name="application-name" content="MelodicBook" />
+    <meta name="msapplication-TileColor" content="#1a0b2e" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- App Icons and Branding -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png" />
+    <link rel="shortcut icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1a0b2e" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MelodicBook - Your ultimate music streaming platform with AI-powered recommendations" />
+    <meta name="keywords" content="music, streaming, playlist, audio, songs, albums" />
+    <meta name="author" content="MelodicBook Team" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MelodicBook - Music Streaming Platform" />
+    <meta property="og:description" content="Discover, stream, and enjoy millions of songs with AI-powered recommendations" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://your-domain.com" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MelodicBook - Music Streaming Platform" />
+    <meta name="twitter:description" content="Discover, stream, and enjoy millions of songs with AI-powered recommendations" />
+    <meta name="twitter:image" content="/twitter-card.png" />
+    
+    <!-- Fonts with Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="modulepreload" href="/src/main.tsx" />
+    
+    <!-- Title -->
+    <title>MelodicBook - Music Streaming Platform</title>
+  </head>
+  <body>
+    <!-- App Container -->
+    <div id="root"></div>
+    
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+      <div style="
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh; 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #1a0b2e 0%, #2e1a47 50%, #0f172a 100%);
+        color: white;
+      ">
+        <h1 style="margin-bottom: 1rem;">MelodicBook requires JavaScript</h1>
+        <p style="margin-bottom: 2rem; opacity: 0.8;">
+          Please enable JavaScript in your browser to enjoy the full music streaming experience.
+        </p>
+        <p style="font-size: 0.9rem; opacity: 0.6;">
+          Having trouble? Contact our support team for assistance.
+        </p>
+      </div>
+    </noscript>
+    
+    <!-- Main App Script -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

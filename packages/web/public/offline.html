@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MelodicBook - You're Offline</title>
+  
+  <!-- Inline critical CSS for offline page -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .offline-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      opacity: 0.7;
+    }
+
+    .offline-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: rgba(255, 255, 255, 0.6);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .message h2 {
+      color: #ff6b6b;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+
+    .message p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      background: linear-gradient(45deg, #ff6b6b, #ff8787);
+      border: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .network-status {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 107, 107, 0.9);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 1000;
+    }
+
+    .network-status.online {
+      background: rgba(76, 205, 196, 0.9);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .subtitle { font-size: 1.125rem; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="network-status" id="networkStatus">
+    📡 Offline
+  </div>
+
+  <div class="container">
+    <div class="logo pulse">🎵</div>
+    
+    <h1>MelodicBook</h1>
+    <p class="subtitle">Your music is temporarily unavailable</p>
+
+    <div class="offline-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M23 9c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V9z"/>
+        <path d="M5 11h14M5 13h8"/>
+        <circle cx="18" cy="12" r="1"/>
+        <line x1="1" y1="1" x2="23" y2="23"/>
+      </svg>
+    </div>
+
+    <div class="message">
+      <h2>You're currently offline</h2>
+      <p>Don't worry! You can still browse some content that's been saved to your device.</p>
+      <p>Once you're back online, all features will be available again.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn" onclick="tryReconnect()">
+        🔄 Try Again
+      </button>
+      <button class="btn secondary" onclick="viewOfflineContent()">
+        📁 View Saved Content
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Check network status
+    function updateNetworkStatus() {
+      const statusEl = document.getElementById('networkStatus');
+      if (navigator.onLine) {
+        statusEl.textContent = '🌐 Online';
+        statusEl.className = 'network-status online';
+        
+        // Auto-reload when back online
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        statusEl.textContent = '📡 Offline';
+        statusEl.className = 'network-status';
+      }
+    }
+
+    // Try to reconnect
+    function tryReconnect() {
+      updateNetworkStatus();
+      if (navigator.onLine) {
+        window.location.href = '/';
+      } else {
+        showMessage('Still offline. Please check your connection and try again.');
+      }
+    }
+
+    // View offline content (if available)
+    function viewOfflineContent() {
+      // Try to access cached content
+      window.location.href = '/library';
+    }
+
+    // Show temporary message
+    function showMessage(text) {
+      const messageEl = document.createElement('div');
+      messageEl.textContent = text;
+      messageEl.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 107, 107, 0.9);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 500;
+        z-index: 1000;
+        animation: slideUp 0.3s ease;
+      `;
+      
+      document.body.appendChild(messageEl);
+      
+      setTimeout(() => {
+        messageEl.remove();
+      }, 3000);
+    }
+
+    // Listen for network changes
+    window.addEventListener('online', updateNetworkStatus);
+    window.addEventListener('offline', updateNetworkStatus);
+
+    // Initial status check
+    updateNetworkStatus();
+
+    // Add slide up animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideUp {
+        from { transform: translate(-50%, 100%); opacity: 0; }
+        to { transform: translate(-50%, 0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
